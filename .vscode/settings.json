@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "e_bool.h": "c",
+        "collision.h": "c",
+        "doom.h": "c",
+        "player.h": "c"
+    }
+}

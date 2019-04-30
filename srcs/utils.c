@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:49:26 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:19:27 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/27 20:17:04 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		normalize_vector(t_vector *vector)
 double		get_distance_between_points(double x1, double y1,
 				double x2, double y2)
 {
-	return (sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)));
+	return (hypot(x1 - x2, y1 - y2));
 }
 
 int			is_close_to(t_coords target, t_coords pos, double distance)
