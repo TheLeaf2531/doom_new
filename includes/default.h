@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 02:34:07 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 20:14:53 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:05:23 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 
-# define CROSSHAIR_COLOR 0xE400FF00
+# define CROSSHAIR_COLOR 0xFFD700
 
 # define FPS_MAX 300
 

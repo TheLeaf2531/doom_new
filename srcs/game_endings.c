@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 23:42:17 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:18:59 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:15:36 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	game_over(t_env *e, TTF_Font *font, SDL_Surface *surface, t_config *op)
 	t_i_coords	pos;
 
 	Mix_PlayChannel(-1, e->sounds->mwiiicrkk, 0);
-	game_over = write_text(font, "GAME OVER!", (SDL_Colour) {255, 0, 0, 255});
+	game_over = write_text(font, "GAME OVER!",
+		(SDL_Colour) {255, 100, 100, 255});
 	pos.x = op->half_w - game_over->w / 2;
 	pos.y = op->half_h - game_over->h / 2;
 	draw_on_screen(surface, game_over, pos, e_false);
@@ -36,7 +37,7 @@ void	game_victory(TTF_Font *font, SDL_Surface *surface, t_config *op)
 	SDL_Surface	*victory;
 	t_i_coords	pos;
 
-	victory = write_text(font, "VICTORY!", (SDL_Colour) {0, 255, 0, 255});
+	victory = write_text(font, "VICTORY!", (SDL_Colour) {100, 255, 100, 255});
 	pos.x = op->half_w - victory->w / 2;
 	pos.y = op->half_h - victory->h / 2;
 	draw_on_screen(surface, victory, pos, e_false);

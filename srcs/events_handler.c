@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 11:50:17 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:18:59 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:28:58 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ enum e_bool				frame_event(double ms_since_update, t_params params)
 	draw_weapon(e->doom.surface, e->p.weapon->sprite_current,
 			&e->p.weapon->main_animation, &e->op);
 	if (e->p.dead)
-		game_over(e, e->fonts->horrendo120, e->doom.surface, &e->op);
+		game_over(e, e->fonts->sixty40, e->doom.surface, &e->op);
 	if (e->p.success)
-		game_victory(e->fonts->horrendo120, e->doom.surface, &e->op);
+		game_victory(e->fonts->sixty40, e->doom.surface, &e->op);
 	if (frame_event_params->time >= 500 || !frame_event_params->time)
 	{
 		frame_event_params->fps = floor(1 / ms_since_update * 1000);
