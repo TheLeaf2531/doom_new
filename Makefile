@@ -6,15 +6,13 @@
 #    By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/07 17:35:48 by vboissel          #+#    #+#              #
-#    Updated: 2019/04/25 18:18:59 by vboissel         ###   ########.fr        #
+#    Updated: 2019/04/30 18:38:32 by vboissel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, extract, run, redit, debug, editor, norm, git, clean, fclean, re
+.PHONY: all, extract, debug, editor, clean, fclean, re
 
 NAME = doom-nukem
-
-NAME_EDITOR = editor
 
 SRC_PATH = srcs
 
@@ -96,53 +94,15 @@ SRCS_NAMES = collision.c \
 SRC_NAME =	main.c \
 			$(SRCS_NAMES)
 
-SRC_EDITOR_NAME = editor.c \
-				  editor_load_assets.c \
-				  editor_checks.c \
-				  editor_check_map.c \
-				  editor_loop.c \
-				  editor_draw.c \
-				  editor_draw2.c \
-				  editor_panel.c \
-				  editor_panel_map.c \
-				  editor_panel_sector.c \
-				  editor_panel_wall.c \
-				  editor_panel_wall2.c \
-				  editor_panel_object.c \
-				  editor_panel_object2.c \
-				  editor_panel_enemy.c \
-				  editor_panel_pickable.c \
-				  editor_panel_textures.c \
-				  editor_segments.c \
-				  editor_panel_buttons.c \
-				  editor_mouse_clicks.c \
-				  editor_mouse_clicks_utils.c \
-				  editor_mouse_clicks_on.c \
-				  editor_mouse_clicks_on2.c \
-				  editor_mouse_clicks_action.c \
-				  editor_add_elements_in_map.c \
-				  editor_move_stuff.c \
-				  editor_move_stuff2.c \
-				  editor_states.c \
-				  editor_enemies.c \
-				  editor_objects.c \
-				  editor_pickables.c \
-				  editor_walls_nodes.c \
-				  $(SRCS_NAMES)
-
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
-
-SRCS_EDITOR = $(addprefix $(SRC_PATH)/,$(SRC_EDITOR_NAME))
 
 OBJ_PATH = objs
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-OBJ_EDITOR_NAME = $(SRC_EDITOR_NAME:.c=.o)
-
 OBJS = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-OBJS_EDITOR = $(addprefix $(OBJ_PATH)/,$(OBJ_EDITOR_NAME))
+OBJS_EDITOR = $(addprefix $(OBJ_PATH))
 
 INCL = includes
 
@@ -195,7 +155,7 @@ else
     SDL_CFLAGS = -I/usr/local/include/SDL2 -D_REENTRANT
 endif
 
-all: $(NAME) $(NAME_EDITOR)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	@if [ ! -d $(SDL_PATH)/$(SDL2) ] || [ ! -d $(SDL_PATH)/$(SDL2_MIXER) ] \
@@ -209,16 +169,6 @@ $(NAME): $(OBJS)
 	@$(MAKE) -j -C libft
 	$(CC) $(OBJS) $(LDLIBFT) $(LIBS) $(SDL_LDFLAGS) -o $@
 
-$(NAME_EDITOR): $(OBJS_EDITOR)
-	@if [ ! -d $(SDL_PATH)/$(SDL2) ] || [ ! -d $(SDL_PATH)/$(SDL2_MIXER) ] \
-	    || [ ! -d $(SDL_PATH)/$(SDL2_TTF) ]; then $(EXTRACT); fi
-	@if [ ! -d $(SDL_PATH)/$(SDL2)/build ]; then $(CONFIGURE_SDL2); fi
-	@if [ ! -d $(SDL_PATH)/$(SDL2_MIXER)/build ]; \
-	    then $(CONFIGURE_SDL2_MIXER); fi
-	@if [ ! -e $(SDL_PATH)/$(SDL2_TTF)/config.status ]; \
-	    then $(CONFIGURE_SDL2_TTF); fi
-	@$(MAKE) -j -C libft
-	$(CC) $(OBJS_EDITOR) $(LDLIBFT) $(LIBS) $(SDL_LDFLAGS) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@if [ ! -d $(SDL_PATH)/$(SDL2) ] || [ ! -d $(SDL_PATH)/$(SDL2_MIXER) ] \
@@ -231,29 +181,13 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	mkdir $(OBJ_PATH) 2> /dev/null || true
 	$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
-run: $(NAME)
-	./$(NAME) mabite.roflolilolmao
-
-redit: $(NAME_EDITOR)
-	./$(NAME_EDITOR) mabite.roflolilolmao
-
-norm:
-	norminette $(SRCS) $(INCL)
-	$(MAKE) -C libft norm
-
-git: fclean
-	git add -A
-	git status
-
 clean:
 	$(RM) $(OBJS)
-	$(RM) $(OBJS_EDITOR)
 	$(RM) mabite.roflolilolmao
 	rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(NAME_EDITOR)
 	$(MAKE) -C libft fclean
 	$(RM) $(SDL_PATH)/$(SDL2)
 	$(RM) $(SDL_PATH)/$(SDL2_MIXER)
