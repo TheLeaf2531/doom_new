@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 00:45:13 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:18:59 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:57:46 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "timer_handler.h"
 #include "loop.h"
 #include "weapon.h"
-#include "gun.h"
+#include "book.h"
 #include "ui.h"
 #include "enemies_intelligence.h"
 
@@ -120,7 +120,7 @@ static void	init_game_loop(t_env *e, t_logic_params *update_logic_params,
 	add_event(&e->timer_handler, 30000, &day_to_night, &e->map->daytime);
 	e->map->hud.id = 0;
 	add_event(&e->timer_handler, 1000, &cross_index, &e->map->hud.id);
-	add_event(&e->timer_handler, 5, &gun_idle_anim,
+	add_event(&e->timer_handler, 5, &book_idle_anim,
 			get_weapon(e->p.weapons, 1));
 	add_event(&e->timer_handler, 1000.0 / 60.0, &let_enemies_act, e);
 	add_event(&e->timer_handler, 1000, &toggle_player_health, &e->p);

@@ -3,6 +3,8 @@
         "e_bool.h": "c",
         "collision.h": "c",
         "doom.h": "c",
-        "player.h": "c"
+        "player.h": "c",
+        "enemies_intelligence.h": "c",
+        "basic_enemies_intelligence.h": "c"
     }
 }

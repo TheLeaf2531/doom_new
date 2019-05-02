@@ -6,14 +6,14 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 00:39:07 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:19:27 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:57:46 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 #include "collision.h"
 #include "weapon.h"
-#include "gun.h"
+#include "book.h"
 #include "melee.h"
 
 static t_collisions	*skip_portals(t_collisions *ptr)

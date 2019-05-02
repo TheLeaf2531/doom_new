@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 14:02:45 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:18:59 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:59:48 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	read_map_from_file(int fd, t_textures *textures, t_map **map)
 	find_texture_from_file(fd, textures, &(*map)->nightsky);
 	read_hud_from_file(fd, textures, &(*map)->hud);
 	find_texture_from_file(fd, textures, &(*map)->melee_sprite);
-	find_texture_from_file(fd, textures, &(*map)->gun_sprites[0]);
-	find_texture_from_file(fd, textures, &(*map)->gun_sprites[1]);
-	find_texture_from_file(fd, textures, &(*map)->gun_sprites[2]);
-	find_texture_from_file(fd, textures, &(*map)->gun_sprites[3]);
-	find_texture_from_file(fd, textures, &(*map)->gun_sprites[4]);
-	find_texture_from_file(fd, textures, &(*map)->shotgun_sprites[0]);
-	find_texture_from_file(fd, textures, &(*map)->shotgun_sprites[1]);
-	find_texture_from_file(fd, textures, &(*map)->shotgun_sprites[2]);
-	find_texture_from_file(fd, textures, &(*map)->vacuum_sprite);
+	find_texture_from_file(fd, textures, &(*map)->book_sprites[0]);
+	find_texture_from_file(fd, textures, &(*map)->book_sprites[1]);
+	find_texture_from_file(fd, textures, &(*map)->book_sprites[2]);
+	find_texture_from_file(fd, textures, &(*map)->book_sprites[3]);
+	find_texture_from_file(fd, textures, &(*map)->book_sprites[4]);
+	find_texture_from_file(fd, textures, &(*map)->staff_sprites[0]);
+	find_texture_from_file(fd, textures, &(*map)->staff_sprites[1]);
+	find_texture_from_file(fd, textures, &(*map)->staff_sprites[2]);
+	find_texture_from_file(fd, textures, &(*map)->spark_sprite);
 }
 
 void	write_map_to_file(int fd, t_map *map)
@@ -56,13 +56,13 @@ void	write_map_to_file(int fd, t_map *map)
 	write_str_to_file(fd, map->nightsky->userdata);
 	write_hud_to_file(fd, map->hud);
 	write_str_to_file(fd, map->melee_sprite->userdata);
-	write_str_to_file(fd, map->gun_sprites[0]->userdata);
-	write_str_to_file(fd, map->gun_sprites[1]->userdata);
-	write_str_to_file(fd, map->gun_sprites[2]->userdata);
-	write_str_to_file(fd, map->gun_sprites[3]->userdata);
-	write_str_to_file(fd, map->gun_sprites[4]->userdata);
-	write_str_to_file(fd, map->shotgun_sprites[0]->userdata);
-	write_str_to_file(fd, map->shotgun_sprites[1]->userdata);
-	write_str_to_file(fd, map->shotgun_sprites[2]->userdata);
-	write_str_to_file(fd, map->vacuum_sprite->userdata);
+	write_str_to_file(fd, map->book_sprites[0]->userdata);
+	write_str_to_file(fd, map->book_sprites[1]->userdata);
+	write_str_to_file(fd, map->book_sprites[2]->userdata);
+	write_str_to_file(fd, map->book_sprites[3]->userdata);
+	write_str_to_file(fd, map->book_sprites[4]->userdata);
+	write_str_to_file(fd, map->staff_sprites[0]->userdata);
+	write_str_to_file(fd, map->staff_sprites[1]->userdata);
+	write_str_to_file(fd, map->staff_sprites[2]->userdata);
+	write_str_to_file(fd, map->spark_sprite->userdata);
 }

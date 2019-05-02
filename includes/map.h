@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 06:13:46 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 20:17:27 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:59:48 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ typedef struct			s_map
 	enum e_bool			daytime;
 	t_hud				hud;
 	SDL_Surface			*melee_sprite;
-	SDL_Surface			*gun_sprites[5];
-	SDL_Surface			*shotgun_sprites[3];
-	SDL_Surface			*vacuum_sprite;
-	SDL_Surface			*gun_to_pick;
-	SDL_Surface			*shotgun_to_pick;
-	SDL_Surface			*vacuum_to_pick;
+	SDL_Surface			*book_sprites[5];
+	SDL_Surface			*staff_sprites[3];
+	SDL_Surface			*spark_sprite;
+	SDL_Surface			*book_to_pick;
+	SDL_Surface			*staff_to_pick;
+	SDL_Surface			*spark_to_pick;
 }						t_map;
 
 void					free_map(t_map *map);

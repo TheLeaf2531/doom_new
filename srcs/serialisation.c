@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 03:37:21 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/26 17:42:19 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:47:27 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	check_if_file_is_valid(int *fd, char *filename)
 	struct stat st_verif;
 
 	if ((stat(filename, &st)) < 0)
-		error_doom("File does not exist.");
+		error_doom("Map_file does not exist.");
 	if (st.st_size > 100000000)
 		error_doom("Map_file error");
 	if (st.st_size < 1000000)
 		error_doom("Map_file error");
 	*fd = open(filename, O_RDONLY);
 	if (*fd <= 0)
-		error_doom("Couldn't open file");
+		error_doom("Couldn't open Map_file");
 	read(*fd, &st_verif.st_size, sizeof(st_verif.st_size));
 	if (st_verif.st_size != st.st_size)
-		error_doom("It seems your map has been corrupted. That's naughty!");
+		error_doom("Corrupted map_file");
 }
 
 void	read_file(char *filename, t_env *e)
@@ -65,8 +65,7 @@ void	write_file_protections(int fd, char *filename)
 	struct stat st;
 
 	if ((stat(filename, &st)) < 0)
-		error_doom("Wow, that really shouldn't happen. It seems the map doesn't"
-			"exist ...");
+		error_doom("Map_file does not exist.");
 	write(fd, &st.st_size, sizeof(st.st_size));
 }
 
@@ -84,7 +83,7 @@ void	write_file(char *filename, t_textures *textures, t_map *map)
 	write_map_to_file(fd, map);
 	close(fd);
 	if ((fd = open(filename, O_WRONLY)) <= 0)
-		error_doom("There was a problem while reopening the file.");
+		error_doom("Cannot re-open map_file.");
 	write_file_protections(fd, filename);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 08:48:49 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:20:13 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:59:48 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef struct			s_pickable
 	t_object			*object;
 	enum				e_pickable_type
 	{
-		et_gun,
-		et_shotgun,
-		et_vacuum
+		et_book,
+		et_staff,
+		et_spark
 	}					type;
 	SDL_Surface			*sprite_to_pick[3];
 }						t_pickable;

@@ -6,7 +6,7 @@
 #    By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/07 17:35:48 by vboissel          #+#    #+#              #
-#    Updated: 2019/04/30 18:38:32 by vboissel         ###   ########.fr        #
+#    Updated: 2019/05/01 20:59:48 by vboissel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,9 +72,9 @@ SRCS_NAMES = collision.c \
 			melee.c \
 			in_which_sector.c \
 			in_which_sector_utils.c \
-			gun.c \
-			shotgun.c \
-			vacuum.c \
+			book.c \
+			staff.c \
+			spark.c \
 			skybox.c \
 			config.c \
 			textures.c \

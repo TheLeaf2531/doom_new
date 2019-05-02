@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shotgun.c                                          :+:      :+:    :+:   */
+/*   staff.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 07:54:18 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:17:45 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:17:01 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "doom.h"
 #include "default.h"
 
-enum e_bool	shotgun_firing(double ms_since_update, t_params params)
+enum e_bool	staff_firing(double ms_since_update, t_params params)
 {
 	t_weapon_and_timer *ptr;
 
@@ -33,7 +33,7 @@ enum e_bool	shotgun_firing(double ms_since_update, t_params params)
 	return (e_true);
 }
 
-void		shotgun_primary(t_env *e, t_timer_handler *timer_handler)
+void		staff_primary(t_env *e, t_timer_handler *timer_handler)
 {
 	t_weapon_and_timer	*params;
 	t_weapon			*weapon;
@@ -51,42 +51,42 @@ void		shotgun_primary(t_env *e, t_timer_handler *timer_handler)
 	params->weapon = weapon;
 	params->timer_handler = timer_handler;
 	weapon_ray_fire(e, timer_handler);
-	add_event(timer_handler, 1, &shotgun_firing, params);
+	add_event(timer_handler, 1, &staff_firing, params);
 	add_event(timer_handler, weapon->main_cooldown, &unlock,
 		&weapon->main_ready);
 }
 
-void		load_shotgun_sprites(t_weapon *weapon, t_map *map)
+void		load_staff_sprites(t_weapon *weapon, t_map *map)
 {
 	Uint32 i;
 
 	i = 0;
-	weapon->sprites[0] = map->shotgun_sprites[0];
+	weapon->sprites[0] = map->staff_sprites[0];
 	weapon->sprite_current = weapon->sprites[0];
-	weapon->sprites_fire = map->shotgun_sprites[2];
-	weapon->sprites_cooldown = map->shotgun_sprites[1];
+	weapon->sprites_fire = map->staff_sprites[2];
+	weapon->sprites_cooldown = map->staff_sprites[1];
 }
 
-t_weapon	*load_shotgun(t_sounds *sounds, t_map *map)
+t_weapon	*load_staff(t_sounds *sounds, t_map *map)
 {
-	t_weapon *shotgun;
+	t_weapon *staff;
 
-	if (!(shotgun = (t_weapon *)malloc(sizeof(t_weapon))))
-		error_doom("Couldn't malloc shotgun");
-	load_shotgun_sprites(shotgun, map);
-	shotgun->ammo = 5;
-	shotgun->usable = e_false;
-	reset_animation(&shotgun->animation);
-	shotgun->animation.duration = 500;
-	shotgun->main = shotgun_primary;
-	shotgun->main_cooldown = 1500;
-	reset_animation(&shotgun->main_animation);
-	shotgun->main_ready = e_true;
-	if (!(shotgun->main_sound = sounds->pew))
-		error_doom("Can't load shotgun sound ...");
-	shotgun->range = HORIZON;
-	shotgun->scatter = 30;
-	shotgun->scatter_angle = 0.785398;
-	shotgun->damage = 90;
-	return (shotgun);
+	if (!(staff = (t_weapon *)malloc(sizeof(t_weapon))))
+		error_doom("Couldn't malloc staff");
+	load_staff_sprites(staff, map);
+	staff->ammo = 5;
+	staff->usable = e_false;
+	reset_animation(&staff->animation);
+	staff->animation.duration = 500;
+	staff->main = staff_primary;
+	staff->main_cooldown = 1500;
+	reset_animation(&staff->main_animation);
+	staff->main_ready = e_true;
+	if (!(staff->main_sound = sounds->pew))
+		error_doom("Can't load staff sound ...");
+	staff->range = HORIZON;
+	staff->scatter = 30;
+	staff->scatter_angle = 0.785398;
+	staff->damage = 90;
+	return (staff);
 }

@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 03:48:18 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:17:09 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 16:42:46 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include "doom.h"
 #include <math.h>
 #include <unistd.h>
-
-double		get_segment_length(t_segment *s)
-{
-	double length;
-
-	length = sqrt((s->x1 - s->x2) * (s->x1 - s->x2)
-			+ (s->y1 - s->y2) * (s->y1 - s->y2));
-	return (length);
-}
 
 void		change_segment_length(t_segment *segment, double length)
 {
@@ -38,6 +29,15 @@ void		change_segment_length(t_segment *segment, double length)
 		+ (segment->x2 - segment->x1) / origin_length * length;
 	segment->y2 = segment->y2
 		+ (segment->y2 - segment->y1) / origin_length * length;
+}
+
+double		get_segment_length(t_segment *s)
+{
+	double length;
+
+	length = sqrt((s->x1 - s->x2) * (s->x1 - s->x2)
+			+ (s->y1 - s->y2) * (s->y1 - s->y2));
+	return (length);
 }
 
 t_segment	create_segment(double x1, double y1, double x2, double y2)

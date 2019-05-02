@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 05:35:26 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:18:59 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:19:45 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 #include "enemies_intelligence.h"
 #include "player.h"
 
-void		change_direction(t_enemy *enemy)
-{
-	enemy->heading = (t_vector){rand() % 101 - 51, rand() % 101 - 51};
-	if (enemy->heading.x == 0 && enemy->heading.y == 0)
-		enemy->heading.x = 1;
-	normalize_vector(&enemy->heading);
-}
-
 void		set_sprite(t_enemy *enemy, char *name, t_env *e)
 {
 	SDL_Surface *sprite;
 
 	find_texture_by_name(e->textures, name, &sprite);
 	enemy->front = sprite;
+}
+
+void		change_direction(t_enemy *enemy)
+{
+	enemy->heading = (t_vector){rand() % 101 - 51, rand() % 101 - 51};
+	if (enemy->heading.x == 0 && enemy->heading.y == 0)
+		enemy->heading.x = 1;
+	normalize_vector(&enemy->heading);
 }
 
 void		shoot_player(t_env *e, t_enemy *enemy)
@@ -56,21 +56,10 @@ void		shoot_player(t_env *e, t_enemy *enemy)
 		j++;
 	}
 	if (!e->p.success)
-		e->p.health -= BRAZILIAN_HANDGUN_DAMAGE;
+		e->p.health -= GUNNER_DAMAGE;
 }
 
-void		pew_part_two_yay_to_the_norm(t_enemy *enemy, t_env *e)
-{
-	if ((enemy->step == 3 && enemy->animation_time > 1500)
-			|| (enemy->step == 7 && enemy->animation_time > 2500)
-				|| (enemy->step == 11 && enemy->animation_time > 3500))
-	{
-		set_sprite(enemy, "textures/sprites/enemy_front_firing_3.bmp", e);
-		enemy->step++;
-	}
-}
-
-void		pew(t_enemy *enemy, t_env *e)
+void		shoot(t_enemy *enemy, t_env *e)
 {
 	if ((enemy->step == 0 && enemy->animation_time > 1000)
 			|| (enemy->step == 4 && enemy->animation_time > 2000)
@@ -94,5 +83,16 @@ void		pew(t_enemy *enemy, t_env *e)
 		enemy->step++;
 		shoot_player(e, enemy);
 	}
-	pew_part_two_yay_to_the_norm(enemy, e);
+	shoot_part_two(enemy, e);
+}
+
+void		shoot_part_two(t_enemy *enemy, t_env *e)
+{
+	if ((enemy->step == 3 && enemy->animation_time > 1500)
+			|| (enemy->step == 7 && enemy->animation_time > 2500)
+				|| (enemy->step == 11 && enemy->animation_time > 3500))
+	{
+		set_sprite(enemy, "textures/sprites/enemy_front_firing_3.bmp", e);
+		enemy->step++;
+	}
 }

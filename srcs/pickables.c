@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 04:22:46 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:22:28 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:59:48 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void		delete_pickable(t_pickables **pickables, t_pickable *to_delete)
 
 void		do_stuff(t_player *player, t_pickables *pickables)
 {
-	if (pickables->item.type == et_gun)
+	if (pickables->item.type == et_book)
 		make_weapon_usable(player->weapons, 1);
-	else if (pickables->item.type == et_shotgun)
+	else if (pickables->item.type == et_staff)
 		make_weapon_usable(player->weapons, 2);
-	else if (pickables->item.type == et_vacuum)
+	else if (pickables->item.type == et_spark)
 		make_weapon_usable(player->weapons, 3);
 	else
 		error_doom("invalid pickable");

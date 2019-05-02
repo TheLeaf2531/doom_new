@@ -6,13 +6,12 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 22:56:51 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:22:15 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:27:20 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "doom.h"
-#include "editor.h"
 #include "in_which_sector.h"
 
 int					is_in_sector(t_coords pos, t_sector *sector)

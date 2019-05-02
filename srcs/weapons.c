@@ -6,14 +6,14 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 00:14:32 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/26 17:45:07 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:59:48 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 #include "collision.h"
 #include "weapon.h"
-#include "gun.h"
+#include "book.h"
 #include "melee.h"
 
 void		make_weapon_usable(t_weapons *node, Uint32 target)
@@ -65,22 +65,22 @@ t_weapons	*allocate_weapons(t_sounds *sounds, t_map *map)
 	if (!(node = (t_weapons *)malloc(sizeof(t_weapons))))
 		error_doom("Couldn't allocate weapons");
 	first = node;
-	node->item = load_gun(sounds, map);
+	node->item = load_book(sounds, map);
 	if (!(node->next = (t_weapons *)malloc(sizeof(t_weapons))))
 		error_doom("Couldn't allocate weapons");
 	node = node->next;
 	node->next = NULL;
-	node->item = load_gun(sounds, map);
+	node->item = load_book(sounds, map);
 	if (!(node->next = (t_weapons *)malloc(sizeof(t_weapons))))
 		error_doom("Couldn't allocate weapons");
 	node = node->next;
 	node->next = NULL;
-	node->item = load_shotgun(sounds, map);
+	node->item = load_staff(sounds, map);
 	if (!(node->next = (t_weapons *)malloc(sizeof(t_weapons))))
 		error_doom("Couldn't allocate weapons");
 	node = node->next;
 	node->next = NULL;
-	node->item = load_vacuum(sounds, map);
+	node->item = load_spark(sounds, map);
 	return (first);
 }
 

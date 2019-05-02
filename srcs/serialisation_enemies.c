@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 04:48:41 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:17:15 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:20:09 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_enemy_from_type(t_enemy *enemy)
 	else if (enemy->type == et_brazil)
 	{
 		enemy->act = roam;
-		enemy->speed = BASE_SCOOTER_SPEED;
+		enemy->speed = BASE_GUNNER_SPEED;
 	}
 	else
 		error_doom("invalid enemy");

@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:14:02 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 20:18:58 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 16:19:12 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ enum e_bool		is_in_rect(t_rect *rect, int x, int y);
 int				is_close_to(t_coords target, t_coords point, double dist);
 t_u_range		wall_range(double wall_height, double vision_height,
 					Uint32 win_h);
+t_segment		set_segment(double x1, double y1, double x2, double y2);
 
 #endif

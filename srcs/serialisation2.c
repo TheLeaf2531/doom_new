@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 03:37:45 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 18:17:41 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:49:06 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	read_str_from_file(int fd, char **name)
 	while (1)
 	{
 		if (read(fd, c, sizeof(char)) <= 0)
-			error_doom("couldn't read str in file");
+			error_doom("Cannot read file");
 		new_name = ft_strjoin(*name, c);
 		free(*name);
 		*name = new_name;
@@ -45,7 +45,7 @@ void	write_str_to_file(int fd, char *name)
 	int		i;
 
 	if (!name)
-		error_doom("can't write null str");
+		error_doom("Cannot write on NULL strings");
 	i = 0;
 	while (1)
 	{
@@ -64,9 +64,9 @@ void	copy_file_in_file2(int fd, int name_fd, char **buffer)
 	{
 		read_bytes = read(name_fd, *buffer, 1024);
 		if (read_bytes < 0)
-			error_doom("error while copying from file");
+			error_doom("error while copying from map_file");
 		if (write(fd, *buffer, read_bytes) != read_bytes)
-			error_doom("error while copying to file");
+			error_doom("error while copying to map_file");
 		if (read_bytes < 1024)
 			break ;
 	}

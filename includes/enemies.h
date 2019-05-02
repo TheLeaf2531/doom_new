@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 05:06:42 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/25 20:16:34 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:20:44 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include "sectors.h"
 # include "enemies_intelligence.h"
 
-# define BASE_SCOOTER_SPEED 1
-# define FAST_SCOOTER_SPEED 5
+# define BASE_GUNNER_SPEED 1
+# define FAST_GUNNER_SPEED 5
 # define BASE_BLACKHOLE_SPEED 0.5
-# define BRAZILIAN_HANDGUN_DAMAGE 2
+# define GUNNER_DAMAGE 2
 
 typedef struct s_object	t_object;
 
